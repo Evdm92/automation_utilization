@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#317EFB"/>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Automation Utilization</title>
+</head>
+<body>
+  <div id="login-screen">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="login()">Login</button>
+  </div>
+
+  <div id="main-screen" style="display:none;">
+    <h1>Automation Utilization</h1>
+    <div class="tabs">
+      <button onclick="showTab('automation')">Automation Utilization</button>
+      <button onclick="showTab('strapper')">Strapper Utilization</button>
+      <button onclick="showTab('report')">Generate Report</button>
+    </div>
+
+    <div id="automation" class="tab-content">
+      <h2>Automation Entry</h2>
+      <input type="datetime-local" id="auto-date" />
+      <input type="number" id="machine-number" placeholder="Machine Number (9-20)" />
+      <input type="number" id="packers" placeholder="Number of Packers" />
+      <select id="carton-type">
+        <option>A02D</option><option>A07D</option><option>E10D</option>
+        <option>A11D</option><option>E15D</option><option>A15C</option>
+      </select>
+      <input type="number" id="cartons-produced" placeholder="Cartons Produced" />
+      <select id="inventory-type">
+        <option>Unlabeled</option><option>Labeled</option>
+        <option>Wrapped</option><option>Wrapped and Labelled</option>
+      </select>
+      <select id="machine-status">
+        <option>Idle</option><option>Operating</option><option>Breakdown</option>
+      </select>
+      <input type="number" id="bins-tipped" placeholder="Bins Tipped" />
+      <input type="number" id="avg-bin-weight" placeholder="Average Bin Weight" />
+      <button onclick="saveAutomation()">Save Automation Entry</button>
+    </div>
+
+    <div id="strapper" class="tab-content" style="display:none;">
+      <h2>Strapper Entry</h2>
+      <input type="datetime-local" id="strap-date" />
+      <input type="number" id="strap1" placeholder="Auto Strapper 1 Pallets" />
+      <select id="strap1-status">
+        <option>Idle</option><option>Breakdown</option><option>Operational</option>
+      </select>
+      <input type="number" id="strap2" placeholder="Auto Strapper 2 Pallets" />
+      <select id="strap2-status">
+        <option>Idle</option><option>Breakdown</option><option>Operational</option>
+      </select>
+      <input type="number" id="manual-strap" placeholder="Manual Strapping Pallets" />
+      <button onclick="saveStrapper()">Save Strapper Entry</button>
+    </div>
+
+    <div id="report" class="tab-content" style="display:none;">
+      <h2>Reports</h2>
+      <div id="report-output"></div>
+      <button onclick="generateReport()">Generate Report</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script src="sw_register.js"></script>
+</body>
+</html>
